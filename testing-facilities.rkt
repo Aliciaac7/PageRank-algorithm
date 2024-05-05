@@ -29,18 +29,18 @@
       (if (= guess k) (random-to-n-excluding n k) guess)))
   ;; Calculuate a list of edges. Remove duplicates via list->set->list
   (set->list
-   (list->set
+  (list->set
     (foldl 
-     ;; For each node, next-node, in [0,..,n-1]
-     (lambda (next-node acc)
-       ;; Generate some random number of edges of form `(,next-node ,o)
-       (append acc (map (lambda (_) `(,(string->symbol (format "n~a" next-node))
+    ;; For each node, next-node, in [0,..,n-1]
+    (lambda (next-node acc)
+      ;; Generate some random number of edges of form `(,next-node ,o)
+      (append acc (map (lambda (_) `(,(string->symbol (format "n~a" next-node))
                                       ;; Take care to ensure we don't include self-edges
                                       ,(string->symbol (format "n~a" (random-to-n-excluding n next-node)))))
                         ;; Take care to ensure that each node links to one thing
                         (range (random 1 n)))))
-     '()
-     (range n)))))
+    '()
+    (range n)))))
 
 ;; generate a random pagerank of a certain size
 ;; ensures that no two pagerank nodes have the same value

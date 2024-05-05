@@ -1,26 +1,5 @@
 #lang racket
 
-;; Project 2: Implementing PageRank
-;;
-;; PageRank is a popular graph algorithm used for information
-;; retrieval and was first popularized as an algorithm powering
-;; the Google search engine. Details of the PageRank algorithm will be
-;; discussed in class. Here, you will implement several functions that
-;; implement the PageRank algorithm in Racket.
-;;
-;; Hints: 
-;; 
-;; - For this project, you may assume that no graph will include
-;; any "self-links" (pages that link to themselves) and that each page
-;; will link to at least one other page.
-;;
-;; - you can use the code in `testing-facilities.rkt` to help generate
-;; test input graphs for the project. The test suite was generated
-;; using those functions.
-;;
-;; - You may want to define "helper functions" to break up complicated
-;; function definitions.
-
 (provide graph?
         pagerank?
         num-pages
@@ -44,12 +23,6 @@
                 [else #f]))
         glst)))
 
-;; Our implementation takes input graphs and turns them into
-;; PageRanks. A PageRank is a Racket hash-map that maps pages (each 
-;; represented as a Racket symbol) to their corresponding weights,
-;; where those weights must sum to 1 (over the whole map).
-;; A PageRank encodes a discrete probability distribution over pages.
-;;
 ;; The test graphs for this assignment adhere to several constraints:
 ;; + There are no "terminal" nodes. All nodes link to at least one
 ;; other node.
